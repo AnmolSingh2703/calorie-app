@@ -5,11 +5,20 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "calorieapp",
-    "userInterfaceStyle": "automatic",
-    "newArchEnabled": true,
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/images/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "This app needs camera access to snap photos of your meals and scan nutrition labels.",
+        "NSPhotoLibraryUsageDescription": "This app needs gallery access to upload screenshots of nutritional charts.",
+        "NSSpeechRecognitionUsageDescription": "This app uses speech recognition to log your meals via voice commands.",
+        "NSMicrophoneUsageDescription": "This app needs microphone access to record your vocal food logs."
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -25,6 +34,10 @@
       "output": "static",
       "favicon": "./assets/images/favicon.png"
     },
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    },
     "plugins": [
       "expo-router",
       [
@@ -39,11 +52,20 @@
           }
         }
       ],
-      "expo-speech-recognition"
-    ],
-    "experiments": {
-      "typedRoutes": true,
-      "reactCompiler": true
-    }
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow NutriSight to use the camera to scan food and labels."
+        }
+      ]
+      // ,
+      // [
+      //   "expo-speech-recognition",
+      //   {
+      //     "microphonePermission": "Allow NutriSight to listen to your voice logs."
+      //   }
+      // ]
+    ]
   }
 }
+//as
